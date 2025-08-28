@@ -18,13 +18,13 @@ const question1 = () => {
     if (sidebarIsOpen) {
       // Close the sidebar
       sidebar.classList.remove('opened');
-      sidebarButton.innerHTML = '›';
+      sidebarButton.textContent = '›';
       
     } else {
       // Open the sidebar
       /** YOUR CODE HERE */
       sidebar.classList.add('opened');
-      sidebarButton.innerHTML = '‹';
+      sidebarButton.textContent = '‹';
     }
   });
 };
@@ -41,10 +41,12 @@ const question2 = () => {
   addTodoButton.addEventListener('click', (event) => {
     let inputValue = taskName.value;
     // console.log(inputValue)
-    const newUl = document.createElement("li");
-    newUl.append(inputValue);
-    todoListUl.append(newUl);
-    taskName.value = "";
+      if (inputValue != "") {
+        const newUl = document.createElement("li");
+        newUl.append(inputValue);
+        todoListUl.append(newUl);
+        taskName.value = "";
+      }
   })
 };
 
@@ -52,17 +54,28 @@ const question2 = () => {
  * Question 3
  */
 const question3 = () => {
-  const firstNameInput = __YOUR_CODE_HERE__;
-  const lastNameInput = __YOUR_CODE_HERE__;
-  const message = __YOUR_CODE_HERE__;
+  const firstNameInput = document.getElementById('first-name');
+  const lastNameInput = document.getElementById('last-name');
+  const message = document.getElementById('message');
 
   // using this function is reccomended but not necessary
+  let firstname = ''
+  let lastname = ''
   const updateMessage = () => {
     /** YOUR CODE HERE */
-
+    message.textContent = `Hello ${firstname} ${lastname}!`
   };
 
   /** YOUR CODE HERE */
+  firstNameInput.addEventListener("input", (event) => {
+    firstname = firstNameInput.value
+    updateMessage()
+  })
+
+  lastNameInput.addEventListener("input", (event) => {
+    lastname = lastNameInput.value
+    updateMessage()
+  })
 
 };
 
