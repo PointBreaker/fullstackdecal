@@ -17,14 +17,14 @@ const question1 = () => {
     const sidebarIsOpen = sidebar.classList.contains('opened');
     if (sidebarIsOpen) {
       // Close the sidebar
-      sidebar.classList.remove('opened')
-      sidebarButton.innerHTML = '›'
+      sidebar.classList.remove('opened');
+      sidebarButton.innerHTML = '›';
       
     } else {
       // Open the sidebar
       /** YOUR CODE HERE */
-      sidebar.classList.add('opened')
-      sidebarButton.innerHTML = '‹'
+      sidebar.classList.add('opened');
+      sidebarButton.innerHTML = '‹';
     }
   });
 };
@@ -33,12 +33,19 @@ const question1 = () => {
  * Question 2
  */
 const question2 = () => {
-  const taskName = __YOUR_CODE_HERE__;
-  const addTodoButton = __YOUR_CODE_HERE__;
-  const todoListUl = __YOUR_CODE_HERE__;
+  const taskName = document.getElementById('task-name');
+  const addTodoButton = document.getElementById('add-todo');
+  const todoListUl = document.getElementById('todo-list');
 
   /** YOUR CODE HERE */
-
+  addTodoButton.addEventListener('click', (event) => {
+    let inputValue = taskName.value;
+    // console.log(inputValue)
+    const newUl = document.createElement("li");
+    newUl.append(inputValue);
+    todoListUl.append(newUl);
+    taskName.value = "";
+  })
 };
 
 /**
